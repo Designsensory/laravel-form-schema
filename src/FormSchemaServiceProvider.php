@@ -28,14 +28,13 @@ class FormSchemaServiceProvider extends PackageServiceProvider
             ->hasConfigFile('formschema')
             ->publishesServiceProvider('FormSchemaServiceProvider')
             ->hasMigration('create_form_schema_table')
-            ->hasInstallCommand(function(InstallCommand $command) {
+            ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->copyAndRegisterServiceProviderInApp();
             });
     }
-
 
     public static function determineFormModel(): string
     {

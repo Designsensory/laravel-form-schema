@@ -5,7 +5,6 @@ namespace Designsensory\FormSchema\Models;
 use Designsensory\FormSchema\Contracts\SubmissionContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Form
@@ -14,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Submission extends Model implements SubmissionContract
 {
-
     public function __construct(array $attributes = [])
     {
         if (! isset($this->connection)) {
