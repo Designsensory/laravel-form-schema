@@ -2,9 +2,9 @@
 
 namespace Designsensory\FormSchema\Tests;
 
+use Designsensory\FormSchema\FormSchemaServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Designsensory\FormSchema\FormSchemaServiceProvider;
 
 class TestCase extends Orchestra
 {

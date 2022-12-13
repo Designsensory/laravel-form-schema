@@ -5,7 +5,6 @@ namespace Designsensory\FormSchema\Models;
 use Designsensory\FormSchema\Contracts\FieldContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Form
