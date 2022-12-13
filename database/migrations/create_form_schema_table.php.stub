@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+        Schema::connection(config('formschema.database_connection'))->create(config('formschema.forms.table_name'), function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->index();
+            $table->string('slug')->unique();
+            $table->timestamps();
+        });
+
+        Schema::connection(config('formschema.database_connection'))->create(config('formschema.fields.table_name'), function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Designsensory\FormSchema::determineFieldModel())->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('label')->nullable();
+            $table->string('type')->nullable();
+            $table->string('name')->nullable();
+            $table->json('attributes')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::connection(config('formschema.database_connection'))->create(config('formschema.submissions.table_name'), function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Designsensory\FormSchema::determineFormModel())->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
+            $table->json('form_schema');
+            $table->json('answers');
+            $table->timestamps();
+        });
+    }
+};
