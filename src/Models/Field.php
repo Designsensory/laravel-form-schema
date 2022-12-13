@@ -1,7 +1,8 @@
 <?php
 
-namespace Designsensory\LaravelFormSchema\Models;
+namespace Designsensory\FormSchema\Models;
 
+use Designsensory\FormSchema\Contracts\FieldContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @property string title
  */
-class Field extends Model
+class Field extends Model implements FieldContract
 {
     protected $casts = [
         'attributes' => 'collection',

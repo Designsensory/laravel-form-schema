@@ -17,7 +17,7 @@ return new class extends Migration
 
         Schema::connection(config('formschema.database_connection'))->create(config('formschema.fields.table_name'), function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Designsensory\FormSchema::determineFieldModel())->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(Designsensory\FormSchema\FormSchemaServiceProvider::determineFormModel())->constrained(config('formschema.forms.table_name'))->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('label')->nullable();
             $table->string('type')->nullable();
             $table->string('name')->nullable();
@@ -27,7 +27,7 @@ return new class extends Migration
 
         Schema::connection(config('formschema.database_connection'))->create(config('formschema.submissions.table_name'), function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Designsensory\FormSchema::determineFormModel())->nullable()->constrained()->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(Designsensory\FormSchema\FormSchemaServiceProvider::determineFormModel())->nullable()->constrained(config('formschema.forms.table_name'))->nullOnDelete()->cascadeOnUpdate();
             $table->json('form_schema');
             $table->json('answers');
             $table->timestamps();

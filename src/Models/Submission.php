@@ -1,7 +1,8 @@
 <?php
 
-namespace Designsensory\LaravelFormSchema\Models;
+namespace Designsensory\FormSchema\Models;
 
+use Designsensory\FormSchema\Contracts\SubmissionContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @property string title
  */
-class Submission extends Model
+class Submission extends Model implements SubmissionContract
 {
 
     public function __construct(array $attributes = [])

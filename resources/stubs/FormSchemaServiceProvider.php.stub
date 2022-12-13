@@ -1,6 +1,6 @@
 <?php
 
-namespace Designsensory\FormSchema;
+namespace App\Providers;
 
 use Designsensory\FormSchema\Contracts\FieldContract;
 use Designsensory\FormSchema\Contracts\FormContract;
@@ -10,33 +10,10 @@ use Designsensory\FormSchema\Models\Field;
 use Designsensory\FormSchema\Models\Form;
 use Designsensory\FormSchema\Models\Submission;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class FormSchemaServiceProvider extends PackageServiceProvider
+class FormSchemaServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
-    {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('form-schema')
-            ->hasConfigFile('formschema')
-            ->publishesServiceProvider('FormSchemaServiceProvider')
-            ->hasMigration('create_form_schema_table')
-            ->hasInstallCommand(function(InstallCommand $command) {
-                $command
-                    ->publishConfigFile()
-                    ->publishMigrations()
-                    ->copyAndRegisterServiceProviderInApp();
-            });
-    }
-
-
     public static function determineFormModel(): string
     {
         $model = config('formschema.forms.model') ?? Form::class;

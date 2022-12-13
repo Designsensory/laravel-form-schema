@@ -1,7 +1,8 @@
 <?php
 
-namespace Designsensory\LaravelFormSchema\Models;
+namespace Designsensory\FormSchema\Models;
 
+use Designsensory\FormSchema\Contracts\FormContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Sluggable\HasSlug;
@@ -12,7 +13,7 @@ use Spatie\Sluggable\SlugOptions;
  *
  * @property string title
  */
-class Form extends Model
+class Form extends Model implements FormContract
 {
     use HasSlug;
 
