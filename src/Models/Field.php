@@ -36,7 +36,7 @@ class Field extends Model implements FieldContract
 
     public function getSlugOptions(): SlugOptions
     {
-        return SlugOptions::create()->generateSlugsFrom(fn() => 'form-' . $this->form_id . '-' . $this->label )->saveSlugsTo('name')->usingSeparator('_');
+        return SlugOptions::create()->generateSlugsFrom(fn () => 'form-'.$this->form_id.'-'.$this->label)->saveSlugsTo('name')->usingSeparator('_');
     }
 
     /**
