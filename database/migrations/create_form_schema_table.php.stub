@@ -19,9 +19,11 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Designsensory\FormSchema\FormSchemaServiceProvider::determineFormModel())->constrained(config('formschema.forms.table_name'))->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('label')->nullable();
-            $table->string('type')->nullable();
+            $table->string('for')->nullable();
+            $table->string('type');
             $table->string('name')->nullable();
-            $table->json('attributes')->nullable();
+            $table->json('html_attributes')->nullable();
+            $table->json('options')->nullable();
             $table->timestamps();
         });
 

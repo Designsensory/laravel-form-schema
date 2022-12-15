@@ -31,6 +31,6 @@ class Submission extends Model implements SubmissionContract
      */
     public function form(): BelongsTo
     {
-        return $this->belongsTo(Form::class);
+        return $this->belongsTo(config('formschema.forms.model'));
     }
 }

@@ -40,11 +40,11 @@ class Form extends Model implements FormContract
      */
     public function fields(): HasMany
     {
-        return $this->hasMany(Field::class);
+        return $this->hasMany(config('formschema.fields.model'));
     }
 
     public function submissions(): HasMany
     {
-        return $this->hasMany(Submission::class);
+        return $this->hasMany(config('formschema.submissions.model'));
     }
 }
